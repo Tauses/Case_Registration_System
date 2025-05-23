@@ -1,0 +1,47 @@
+﻿@model DTO.DTOModels.DTORegistrering
+@{
+    ViewBag.Title = "Tidsregistrering";
+}
+
+<h2>Ny tidsregistrering</h2>
+
+@using (Html.BeginForm("Opret", "Registrering", FormMethod.Post))
+{
+    <div>
+        <label>Medarbejderinitialer:</label>
+        @Html.TextBoxFor(m => m.MedarbejderInitialer, new { @class = "form-control" })
+    </div>
+    <div>
+        <label>Sag (valgfri):</label>
+        @Html.DropDownList("SagNr", ViewBag.Sager as SelectList, "Ingen", new { @class = "form-control" })
+    </div>
+    <div>
+        <label>Starttidspunkt:</label>
+        @Html.TextBoxFor(m => m.StartTid, new { type = "datetime-local", @class = "form-control" })
+    </div>
+    <div>
+        <label>Sluttidspunkt:</label>
+        @Html.TextBoxFor(m => m.SlutTid, new { type = "datetime-local", @class = "form-control" })
+    </div>
+    <button type="submit">Gem registrering</button>
+}
+
+<hr />
+
+<h3>Registreringer denne uge</h3>
+<table class="table">
+    <thead>
+        <tr><th>Sag</th><th>Start</th><th>Slut</th><th>Timer</th></tr>
+    </thead>
+    <tbody>
+        @foreach (var r in ViewBag.Registreringer as List<DTO.DTOModels.DTORegistrering>)
+        {
+            <tr>
+                <td>@(r.SagNr.HasValue ? r.SagNr.ToString() : "(ingen)")</td>
+                <td>@r.StartTid</td>
+                <td>@r.SlutTid</td>
+                <td>@(Math.Round((r.SlutTid - r.StartTid).TotalHours, 2))</td>
+            </tr>
+        }
+    </tbody>
+</table>

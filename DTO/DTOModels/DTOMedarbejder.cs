@@ -6,7 +6,21 @@ using System.Threading.Tasks;
 
 namespace DTO.DTOModels
 {
-    internal class DTOMedarbejder
+    public class DTOMedarbejder
     {
+        public string Initialer { get; set; } = string.Empty;
+        public string CPR { get; set; } = string.Empty;
+        public string Navn { get; set; } = string.Empty;
+        public int AfdelingNummer { get; set; }
+
+        public DTOMedarbejder() { }
+
+        public DTOMedarbejder(string initialer, string cpr, string navn, int afdelingNummer)
+        {
+            Initialer = initialer;
+            CPR = cpr;
+            Navn = navn;
+            AfdelingNummer = afdelingNummer;
+        }
     }
 }

@@ -5,8 +5,52 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TidsregistreringAdmin"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        
+        Title="Admin - Tidsregistrering" Height="650" Width="800">
+    <Grid Margin="10">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="2*"/>
+        </Grid.ColumnDefinitions>
+
+        <StackPanel Grid.Column="0" Margin="5">
+            <TextBlock Text="Afdelinger" FontWeight="Bold"/>
+            <ListBox x:Name="AfdelingListBox" DisplayMemberPath="Navn" />
+            <TextBlock Text="Navn på ny afdeling" Margin="0,10,0,0"/>
+            <TextBox x:Name="NyAfdelingNavnBox" Margin="0,2,0,5"/>
+            <TextBlock Text="Nummer på ny afdeling"/>
+            <TextBox x:Name="NyAfdelingNummerBox" Margin="0,2,0,5"/>
+            <Button Content="Tilføj afdeling" Click="AddAfdeling_Click"/>
+
+            <TextBlock Text="Medarbejdere" Margin="10,10,0,0" FontWeight="Bold"/>
+            <ListBox x:Name="MedarbejderListBox" DisplayMemberPath="Navn" />
+
+            <TextBlock Text="Sager" Margin="0,10,0,0" FontWeight="Bold"/>
+            <ListBox x:Name="SagListBox" Height="100" DisplayMemberPath="Overskrift" />
+        </StackPanel>
+
+        <StackPanel Grid.Column="1" Margin="10">
+            <TextBlock Text="Opret medarbejder" FontWeight="Bold"/>
+            <TextBlock Text="Initialer"/>
+            <TextBox x:Name="InitialerBox" Margin="0,2,0,5"/>
+            <TextBlock Text="CPR"/>
+            <TextBox x:Name="CPRBox" Margin="0,2,0,5"/>
+            <TextBlock Text="Navn"/>
+            <TextBox x:Name="NavnBox" Margin="0,2,0,5"/>
+            <TextBlock Text="Afdeling"/>
+            <ComboBox x:Name="AfdelingCombo" Margin="0,2,0,10"
+                      DisplayMemberPath="Navn" SelectedValuePath="Nummer" />
+            <Button Content="Tilføj medarbejder" Click="AddMedarbejder_Click"/>
+
+            <Separator Margin="10"/>
+
+            <TextBlock Text="Opret sag" FontWeight="Bold"/>
+            <TextBlock Text="Sagsnummer"/>
+            <TextBox x:Name="SagsnrBox" Margin="0,2,0,5"/>
+            <TextBlock Text="Overskrift"/>
+            <TextBox x:Name="OverskriftBox" Margin="0,2,0,5"/>
+            <TextBlock Text="Beskrivelse"/>
+            <TextBox x:Name="BeskrivelseBox" Margin="0,2,0,10"/>
+            <Button Content="Tilføj sag" Click="AddSag_Click"/>
+        </StackPanel>
     </Grid>
 </Window>
