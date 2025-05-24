@@ -23,7 +23,7 @@ namespace DAL.Context
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            // evt. konfiguration og seeding
+            base.OnModelCreating(modelBuilder);
         }
 
     }
