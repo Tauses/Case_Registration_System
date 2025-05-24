@@ -1,19 +1,12 @@
-﻿using System;
+﻿// MainWindow.xaml.cs med AddAfdeling_Click, visuelle timer og CRUD-funktioner
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using BLL.BLLModels;
 using DTO.DTOModels;
+using BLL;
+using BLL.BLLModels;
 
 namespace TidsregistreringAdmin
 {
@@ -56,7 +49,7 @@ namespace TidsregistreringAdmin
                 return;
             }
 
-            DTOAfdeling ny = new DTOAfdeling(new System.Collections.Generic.List<DTOMedarbejder>(), navn, nummer);
+            DTOAfdeling ny = new DTOAfdeling(new List<DTOMedarbejder>(), navn, nummer);
             BLLAfdeling.OpretAfdeling(ny);
 
             LoadAfdelinger();
@@ -94,6 +87,39 @@ namespace TidsregistreringAdmin
             BLLSag.OpretSag(sag);
             LoadSager();
         }
+
+        private void MedarbejderListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var valgt = MedarbejderListBox.SelectedItem as DTOMedarbejder;
+            if (valgt == null) return;
+
+            var registreringer = BLLRegistrering.HentAlleRegistreringer()
+                .Where(r => r.MedarbejderInitialer == valgt.Initialer)
+                .ToList();
+
+            var ugeStart = StartOfWeek(DateTime.Now);
+            var månedStart = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1);
+
+            double timerUge = registreringer
+                .Where(r => r.StartTid >= ugeStart && r.StartTid < ugeStart.AddDays(7))
+                .Sum(r => (r.SlutTid - r.StartTid).TotalHours);
+
+            double timerMåned = registreringer
+                .Where(r => r.StartTid >= månedStart && r.StartTid < månedStart.AddMonths(1))
+                .Sum(r => (r.SlutTid - r.StartTid).TotalHours);
+
+            double totalTimer = registreringer.Sum(r => (r.SlutTid - r.StartTid).TotalHours);
+
+            // Vis timer i visuelle felter i stedet for popup
+            UgeTimerText.Text = $"Uge: {timerUge:0.00} timer";
+            MånedTimerText.Text = $"Måned: {timerMåned:0.00} timer";
+            TotalTimerText.Text = $"Total: {totalTimer:0.00} timer";
+        }
+
+        private DateTime StartOfWeek(DateTime dt)
+        {
+            var diff = (7 + (dt.DayOfWeek - DayOfWeek.Monday)) % 7;
+            return dt.AddDays(-1 * diff).Date;
+        }
     }
 }
-

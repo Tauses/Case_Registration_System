@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TidsregistreringAdmin"
         mc:Ignorable="d"
-        Title="Admin - Tidsregistrering" Height="650" Width="800">
+        Title="Admin - Tidsregistrering" Height="750" Width="800">
     <Grid Margin="10">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*"/>
@@ -22,7 +22,7 @@
             <Button Content="Tilføj afdeling" Click="AddAfdeling_Click"/>
 
             <TextBlock Text="Medarbejdere" Margin="10,10,0,0" FontWeight="Bold"/>
-            <ListBox x:Name="MedarbejderListBox" DisplayMemberPath="Navn" />
+            <ListBox x:Name="MedarbejderListBox" DisplayMemberPath="Navn" SelectionChanged="MedarbejderListBox_SelectionChanged" />
 
             <TextBlock Text="Sager" Margin="0,10,0,0" FontWeight="Bold"/>
             <ListBox x:Name="SagListBox" Height="100" DisplayMemberPath="Overskrift" />
@@ -37,8 +37,7 @@
             <TextBlock Text="Navn"/>
             <TextBox x:Name="NavnBox" Margin="0,2,0,5"/>
             <TextBlock Text="Afdeling"/>
-            <ComboBox x:Name="AfdelingCombo" Margin="0,2,0,10"
-                      DisplayMemberPath="Navn" SelectedValuePath="Nummer" />
+            <ComboBox x:Name="AfdelingCombo" Margin="0,2,0,10" DisplayMemberPath="Navn" SelectedValuePath="Nummer" />
             <Button Content="Tilføj medarbejder" Click="AddMedarbejder_Click"/>
 
             <Separator Margin="10"/>
@@ -51,6 +50,17 @@
             <TextBlock Text="Beskrivelse"/>
             <TextBox x:Name="BeskrivelseBox" Margin="0,2,0,10"/>
             <Button Content="Tilføj sag" Click="AddSag_Click"/>
+
+            <Separator Margin="10"/>
+
+            <TextBlock Text="Timer for valgt medarbejder" FontWeight="Bold" Margin="0,10,0,5"/>
+            <TextBlock x:Name="UgeTimerText" FontWeight="Normal" Margin="0,2,0,2"/>
+            <TextBlock x:Name="MånedTimerText" FontWeight="Normal" Margin="0,2,0,2"/>
+            <TextBlock x:Name="TotalTimerText" FontWeight="Normal" Margin="0,2,0,10"/>
+
+            <Separator Margin="10"/>
+
+
         </StackPanel>
     </Grid>
 </Window>

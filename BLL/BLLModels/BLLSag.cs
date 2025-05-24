@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace BLL.BLLModels
 {
-    public static class BLLSag  // BLL BRUGER REPO TIL CRUD
+    public static class BLLSag 
     {
         public static DTOSag HentSag(int sagsNr) => SagRepo.Get(sagsNr);
         public static List<DTOSag> HentAlleSager() => SagRepo.GetAll();
