@@ -24,7 +24,7 @@ namespace DAL.Repositories
         {
             using (var ctx = new DAL.Context.DatabaseContext())
             {
-                var data = ctx.Afdelinger.Include(a => a.Medarbejdere).ToList();    // system.data.entity fjerner lambda fejl
+                var data = ctx.Afdelinger.Include(a => a.Medarbejdere).ToList();  
                 return data.Select(AfdelingMap.Map).ToList();
             }
         }

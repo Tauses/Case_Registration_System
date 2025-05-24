@@ -1,4 +1,4 @@
-﻿// MainWindow.xaml.cs med AddAfdeling_Click, visuelle timer og CRUD-funktioner
+﻿
 using System;
 using System.Collections.Generic;
 using System.Linq;

@@ -55,8 +55,7 @@ namespace DAL.Repositories
                 using (var ctx = new DAL.Context.DatabaseContext())
                 {
                     var entity = ctx.Sager.Find(sagsNr);
-                    if (entity != null)
-                    {
+                    if (entity != null){
                         ctx.Sager.Remove(entity);
                         ctx.SaveChanges();
                     }
