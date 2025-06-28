@@ -1,3 +1,4 @@
+<h1>Case Registration System</h1>
 A multi‑tier application that allows a company to register working hours on departmental cases. The solution showcases a clean 3‑layer architecture, sharing one domain across multiple UIs: an ASP.NET MVC web app for time registration and a WPF desktop app for administration.
 
 
