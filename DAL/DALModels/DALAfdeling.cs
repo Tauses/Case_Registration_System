@@ -10,7 +10,7 @@ namespace DAL.DALModels
     public class DALAfdeling
     {
         [Key]
-        public int Nummer { get; set; } // bruger dette som 'id'
+        public int Nummer { get; set; }
         public string Navn { get; set; }
 
         public virtual ICollection<DALMedarbejder> Medarbejdere { get; set; }

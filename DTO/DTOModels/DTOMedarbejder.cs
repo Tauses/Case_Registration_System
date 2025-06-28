@@ -8,7 +8,7 @@ namespace DTO.DTOModels
 {
     public class DTOMedarbejder
     {
-        public string Initialer { get; set; } = string.Empty;   // automatisk initialisering, for at undgå null referencer
+        public string Initialer { get; set; } = string.Empty;  
         public string CPR { get; set; } = string.Empty;
         public string Navn { get; set; } = string.Empty;
         public int AfdelingNummer { get; set; }

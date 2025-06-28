@@ -10,11 +10,11 @@ namespace TidsregistreringMedarbejder.Controllers
 {
     public class RegistreringController : Controller
     {
-        // GET: Registrering
+
         public ActionResult Index()
         {
             var registreringer = BLLRegistrering.HentAlleRegistreringer()
-                .Where(r => r.MedarbejderInitialer == "abc") // Eksempel på nuværende bruger
+                .Where(r => r.MedarbejderInitialer == "abc") 
                 .Where(r => GetUgeStart(r.StartTid) == GetUgeStart(DateTime.Now))
                 .ToList();
 
@@ -26,7 +26,7 @@ namespace TidsregistreringMedarbejder.Controllers
             return View(new DTORegistrering());
         }
 
-        // POST: Registrering/Opret
+
         [HttpPost]
         public ActionResult Opret(DTORegistrering dto)
         {

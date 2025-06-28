@@ -10,7 +10,7 @@ namespace DTO.DTOModels
     {
         public int Id { get; set; }
         public string MedarbejderInitialer { get; set; } = string.Empty;
-        public int? SagNr { get; set; } // null hvis ikke tilknyttet sag
+        public int? SagNr { get; set; }
         public DateTime StartTid { get; set; }
         public DateTime SlutTid { get; set; }
 
