@@ -30,6 +30,7 @@ Visual Studio 2022 or newer
 
 SQL Server Express (LocalDB comes with VS)
 
+For Remote DB: Remember to input IP & change DB credentials
 
 # Open the solution in Visual Studio
 TimeRegistration.sln
