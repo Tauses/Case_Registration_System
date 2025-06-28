@@ -11,7 +11,7 @@ A multi‑tier application that allows a company to register working hours on de
 
 <li>WPF (.NET)</li>
 
-<li>Entity Framework 6.x – Code‑First + Migrations</li>
+<li>Entity Framework 6</li>
 
 <li>SQL Server (LocalDB)</li>
 
