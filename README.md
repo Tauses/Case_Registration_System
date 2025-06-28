@@ -30,11 +30,6 @@ Visual Studio 2022 or newer
 
 SQL Server Express (LocalDB comes with VS)
 
-### Installation
-
-# Clone the repository
-$ git clone https://github.com/your‑org/time‑case‑registration.git
-$ cd time‑case‑registration
 
 # Open the solution in Visual Studio
 TimeRegistration.sln
